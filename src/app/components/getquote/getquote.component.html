@@ -1,0 +1,62 @@
+<div style="display: flex; justify-content: center; align-items: center;">
+    <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+        <div class="font-medium text-3xl text-900 mb-3">Quote Calculator</div>
+        <form [formGroup]="quoteForm">
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12">
+                    <p-dropdown [options]="products" [(ngModel)]="selectedProduct" optionLabel="name" name="product"
+                        placeholder="Select A Product" (onChange)="productSelectChanged()"
+                        [ngModelOptions]="{standalone: true}"></p-dropdown>
+                </div>
+                <div class="field col-12">
+                    <ngx-slider [options]="amountOptions" formControlName="amountRequired"></ngx-slider>
+                </div>
+                <div class="field col-12">
+                    <ngx-slider [options]="repaymentOptions" formControlName="term"></ngx-slider>
+                </div>
+
+                <div class="field col-12 md:col-2">
+                    <span class="p-float-label">
+                        <p-dropdown [options]="titleOptions" placeholder="Title" formControlName="title"></p-dropdown>
+                        <label for="title">Title</label>
+                    </span>
+                </div>
+                <div class="field col-12 md:col-5">
+                    <span class="p-float-label">
+                        <input id="firstname" type="text" pInputText formControlName="firstName" />
+                        <label for="firstname">Firstname</label>
+                    </span>
+                </div>
+                <div class="field col-12 md:col-5">
+                    <span class="p-float-label">
+                        <input id="lastname" type="text" pInputText formControlName="lastName" />
+                        <label for="lastname">Lastname</label>
+                    </span>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                        <p-calendar id="dateofbirth" formControlName="dateOfBirth" [showIcon]="true"></p-calendar>
+                        <label for="dateofbirth">Date Of Birth</label>
+                    </span>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input id="email" type="email" pInputText formControlName="email" />
+                        <label for="email">Email</label>
+                    </span>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input id="mobile" type="text" pInputText formControlName="mobile" (keypress)="numberOnly($event)"/>
+                        <label for="mobile">Mobile Number</label>
+                    </span>
+                </div>
+                <div class="p-field">
+                    <p-button label="Calculate" (onClick)="calculate()"></p-button>
+                </div>
+            </div>
+        </form>
+        <p-messages></p-messages>
+    </div>
+
+</div>
